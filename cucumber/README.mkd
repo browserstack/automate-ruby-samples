@@ -1,0 +1,20 @@
+A sample project to run tests over BrowserStack Automate using Capybara.
+
+To run the tests, execute:
+
+```bash
+cucumber username=<username> key=<access-key> platform=<platform> browser=<browser-name>
+```
+or
+```bash
+cucumber username=<username> key=<access-key> os=<os> os_version=<os-version> browser=<browser-name>
+```
+
+Examples:
+```bash
+cucumber username=<username> key=<access-key> platform=WINDOWS browser=chrome
+```
+or
+```bash
+cucumber username=<username> key=<access-key> os="OS X" os_version="Mountain Lion" browser="chrome"
+```
