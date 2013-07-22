@@ -1,0 +1,4 @@
+automate-ruby-samples
+=======================
+
+Documentation for writing Automate test scripts in Ruby.
