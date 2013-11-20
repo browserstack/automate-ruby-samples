@@ -3,8 +3,8 @@ require 'minitest/autorun'
 require 'selenium-webdriver'
 
 class GoogleTest < MiniTest::Test
-  USERNAME = 'akshaybhardwaj1'
-  BROWSERSTACK_ACCESS_KEY = 'XQWDewaJsUzqYJRv8zhr'
+  USERNAME = ''
+  BROWSERSTACK_ACCESS_KEY = ''
   def setup
     if USERNAME == ''
       puts "Please add USERNAME & BROWSERSTACK_ACCESS_KEY in this file"
