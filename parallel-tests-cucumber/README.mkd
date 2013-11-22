@@ -6,7 +6,7 @@ should be run.
 To run the tests, execute:
 
 ```bash
-rake username=<username> key=<access-key>
+rake BS_USERNAME=<username> BS_AUTHKEY=<access-key>
 ```
 
 But with this command, your tests will be run in the browsers one by
@@ -14,7 +14,9 @@ one. To speed up the execution, they can be run parallely on different
 platforms.
 
 ```bash
-rake username=<username> key=<access-key> nodes=3
+rake BS_USERNAME=<username> BS_AUTHKEY=<access-key> nodes=3
 ```
 
 This will run 3 tests simultaneously.
+
+The BS_USERNAME and BS_AUTHKEY environment variables can be set in the environment as well using env or by your CI framework (like Travis or Jenkins).
