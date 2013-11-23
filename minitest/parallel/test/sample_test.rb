@@ -3,8 +3,8 @@ require 'minitest/autorun'
 require 'selenium-webdriver'
 
 class GoogleTest < MiniTest::Test
-  USERNAME = ENV['username']
-  BROWSERSTACK_ACCESS_KEY = ENV['key']
+  USERNAME = ENV['BS_USERNAME']
+  BROWSERSTACK_ACCESS_KEY = ENV['BS_AUTHKEY']
   
   def setup
     if USERNAME == ''
@@ -13,11 +13,11 @@ class GoogleTest < MiniTest::Test
     end
     url = "http://#{USERNAME}:#{BROWSERSTACK_ACCESS_KEY}@hub.browserstack.com/wd/hub"
     capabilities = Selenium::WebDriver::Remote::Capabilities.new
-    capabilities['os'] = ENV['OS']
-    capabilities['os_version'] = ENV['OS_VERSION']
-    capabilities['browser'] = ENV['BROWSER']
-    capabilities['browser_version'] = ENV['BROWSER_VERSION']
-    @driver = Selenium::WebDriver.for(:remote, 
+    capabilities['os'] = ENV['BS_AUTOMATE_OS']
+    capabilities['os_version'] = ENV['BS_AUTOMATE_OS_VERSION']
+    capabilities['browser'] = ENV['SELENIUM_BROWSER']
+    capabilities['browser_version'] = ENV['SELENIUM_VERSION']
+    @driver = Selenium::WebDriver.for(:remote,
                                       :url => url,
                                       :desired_capabilities => capabilities)
   end
@@ -34,3 +34,4 @@ class GoogleTest < MiniTest::Test
     @driver.quit
   end
 end
+

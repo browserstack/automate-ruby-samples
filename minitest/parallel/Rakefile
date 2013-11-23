@@ -14,10 +14,10 @@ task :minitest do
     Parallel.map(@browsers, :in_threads => @parallel_limit) do |browser|
       current_browser = browser
       puts "Running with: #{browser.inspect}"
-      ENV['BROWSER'] = browser['browser']
-      ENV['BROWSER_VERSION'] = browser['browser_version']
-      ENV['OS'] = browser['os']
-      ENV['OS_VERSION'] = browser['os_version']
+      ENV['SELENIUM_BROWSER'] = browser['browser']
+      ENV['SELENIUM_VERSION'] = browser['browser_version']
+      ENV['BS_AUTOMATE_OS'] = browser['os']
+      ENV['BS_AUTOMATE_OS_VERSION'] = browser['os_version']
       Dir.glob(@test_folder).each do |test_file|
         IO.popen("ruby #{test_file}") do |io|
           io.each do |line| 

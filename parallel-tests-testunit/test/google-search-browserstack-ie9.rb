@@ -4,8 +4,8 @@ require 'test/unit'
  
 class SampleTest2 < Test::Unit::TestCase
   def setup
-    username=ENV['username']
-    key=ENV['key']
+    username=ENV['BS_USERNAME']
+    key=ENV['BS_AUTHKEY']
     url = "http://#{username}:#{key}@hub.browserstack.com/wd/hub"
     capabilities = Selenium::WebDriver::Remote::Capabilities.internet_explorer
     capabilities.version = "9.0"

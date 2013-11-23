@@ -3,7 +3,7 @@ A sample project to run tests over BrowserStack Automate.
 To run the tests, execute:
 
 ```bash
-parallel_test -n 2 test/google-search-browserstack-ie9.rb test/google-search-browserstack-chrome-mac.rb
+ruby google-search-browserstack.rb
 ```
 
 Please set the BS_USERNAME and the BS_AUTHKEY environment variables before running the test.
