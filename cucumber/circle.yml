@@ -15,5 +15,6 @@ machine:
     SELENIUM_VERSION: 24
 
 test:
-  cucumber
+  override:
+    cucumber
 
