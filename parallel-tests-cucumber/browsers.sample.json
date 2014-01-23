@@ -3,42 +3,42 @@
     "browser": "firefox",
     "browser_version": "15.0",
     "device": null,
-    "os": "OS X",
-    "os_version": "Snow Leopard"
-  },
-  {
-    "browser": "firefox",
-    "browser_version": "16.0",
-    "device": null,
     "os": "Windows",
     "os_version": "7"
   },
   {
     "browser": "firefox",
-    "browser_version": "17.0",
+    "browser_version": "25.0",
     "device": null,
     "os": "Windows",
     "os_version": "8"
   },
   {
-    "browser": "ie",
-    "browser_version": "8.0",
+    "browser": "chrome",
+    "browser_version": "20.0",
     "device": null,
     "os": "Windows",
     "os_version": "7"
   },
   {
-    "browser": "ie",
-    "browser_version": "9.0",
-    "device": null,
-    "os": "Windows",
-    "os_version": "7"
-  },
-  {
-    "browser": "ie",
-    "browser_version": "10.0",
+    "browser": "chrome",
+    "browser_version": "30.0",
     "device": null,
     "os": "Windows",
     "os_version": "8"
+  },    
+  {
+      "browser": "ie",
+      "browser_version": "8.0",
+      "device": null,
+      "os": "Windows",
+      "os_version": "7"
+  },
+  {
+      "browser": "ie",
+      "browser_version": "9.0",
+      "device": null,
+      "os": "Windows",
+      "os_version": "7"
   }
 ]

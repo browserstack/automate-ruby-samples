@@ -1,20 +1,21 @@
 require 'selenium/webdriver'
 
-url = "http://#{ENV['username']}:#{ENV['key']}@hub.browserstack.com/wd/hub"
+url = "http://#{ENV['BS_USERNAME']}:#{ENV['BS_AUTHKEY']}@hub.browserstack.com/wd/hub"
 
 capabilities = Selenium::WebDriver::Remote::Capabilities.new
-if ENV['OS']
-  capabilities['os'] = ENV['os']
-  capabilities['os_version'] = ENV['os_version']
+
+capabilities['project'] = ENV['BS_AUTOMATE_PROJECT'] if ENV['BS_AUTOMATE_PROJECT']
+capabilities['build'] = ENV['BS_AUTOMATE_BUILD'] if ENV['BS_AUTOMATE_BUILD']
+
+if ENV['BS_AUTOMATE_OS']
+  capabilities['os'] = ENV['BS_AUTOMATE_OS']
+  capabilities['os_version'] = ENV['BS_AUTOMATE_OS_VERSION']
 else
-  capabilities['platform'] = ENV['platform'] || 'ANY'
+  capabilities['platform'] = ENV['SELENIUM_PLATFORM'] || 'ANY'
 end
-if ENV['BROWSER']
-  capabilities['browser'] = ENV['browser']
-else
-  capabilities['browserName'] = ENV['browser'] || 'chrome'
-end
-capabilities['browser_version'] = ENV['browser_version'] if ENV['browser_version']
+
+capabilities['browser'] = ENV['SELENIUM_BROWSER'] || 'chrome'
+capabilities['browser_version'] = ENV['SELENIUM_VERSION'] if ENV['SELENIUM_VERSION']
 
 browser = Selenium::WebDriver.for(:remote, :url => url, :desired_capabilities => capabilities)
 
@@ -22,6 +23,7 @@ Before do |scenario|
   @browser = browser
 end
 
-After do |scenario|
-  @browser.quit
+at_exit do
+  browser.quit
 end
+
