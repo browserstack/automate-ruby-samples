@@ -8,10 +8,11 @@ capabilities['os_version'] = ENV['BS_AUTOMATE_OS_VERSION']
 capabilities['browser'] = ENV['SELENIUM_BROWSER']
 capabilities['browser_version'] = ENV['SELENIUM_VERSION']
 capabilities['browserstack.debug'] = "true"
-
 capabilities['project'] = ENV['BS_AUTOMATE_PROJECT'] if ENV['BS_AUTOMATE_PROJECT']
 capabilities['build'] = ENV['BS_AUTOMATE_BUILD'] if ENV['BS_AUTOMATE_BUILD']
-
+capabilities['platform'] = ENV['BS_AUTOMATE_PLATFORM'] 
+capabilities['device'] = ENV['BS_AUTOMATE_DEVICE']
+capabilities['browserName'] = ENV['BS_AUTOMATE_BROWSER_NAME']            
 browser = Selenium::WebDriver.for(:remote, :url => url,
                                   :desired_capabilities => capabilities)
 

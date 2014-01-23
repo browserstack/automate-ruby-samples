@@ -16,7 +16,9 @@ task :cucumber do
       ENV['SELENIUM_VERSION'] = browser['browser_version']
       ENV['BS_AUTOMATE_OS'] = browser['os']
       ENV['BS_AUTOMATE_OS_VERSION'] = browser['os_version']
-
+      ENV['BS_AUTOMATE_PLATFORM'] = browser['platform']
+      ENV['BS_AUTOMATE_DEVICE'] = browser['device']
+      ENV['BS_AUTOMATE_BROWSER_NAME'] = browser['browserName']
       Rake::Task[:run_features].execute()
     rescue RuntimeError => e
       puts "Error while running task"
