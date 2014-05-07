@@ -1,4 +1,5 @@
 A sample project to run tests over BrowserStack Automate using Capybara.
+Notice that selenium driver.quit is not required for Capybara tests because Capybara implicitly does so.
 
 To run the tests, execute:
 
