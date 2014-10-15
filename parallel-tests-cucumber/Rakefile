@@ -8,6 +8,8 @@ require 'json'
 @parallel_limit = ENV["nodes"] || 1
 @parallel_limit = @parallel_limit.to_i
 
+Cucumber::Rake::Task.new(:run_features)
+
 task :cucumber do
   Parallel.each(@browsers, :in_processes => @parallel_limit) do |browser|
     begin
@@ -21,13 +23,11 @@ task :cucumber do
       ENV['BS_AUTOMATE_BROWSER_NAME'] = browser['browserName']
       ENV['BS_AUTOMATE_PROJECT'] = browser['project']
       ENV['BS_AUTOMATE_BUILD'] = browser['build']
-
       Rake::Task[:run_features].execute()
-    rescue RuntimeError => e
-      puts "Error while running task"
+    rescue Exception => e
+      puts "Error while running task #{e.message}"
     end
   end
 end
 
-Cucumber::Rake::Task.new(:run_features)
 task :default => [:cucumber]
