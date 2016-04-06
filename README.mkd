@@ -1,4 +1,0 @@
-automate-ruby-samples
-=======================
-
-Documentation for writing Selenium test scripts in BrowserStack Automate.
