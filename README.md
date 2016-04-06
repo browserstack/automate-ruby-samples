@@ -7,5 +7,4 @@ For Ruby frameworks integrations and samples with BrowserStack, refer to their i
 
 - [CapyBara](https://github.com/browserstack/capybara-browserstack)
 - [Rspec](https://github.com/browserstack/rspec-browserstack)
-- [Cucumber](https://github.com/browserstack/cucumber-automate-sample)
 - [Cucumber Watir](https://github.com/browserstack/cucumber-watir-browserstack)
