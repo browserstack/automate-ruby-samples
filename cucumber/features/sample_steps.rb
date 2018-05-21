@@ -1,5 +1,5 @@
 Given /^I am on (.+)$/ do |url|
-  @browser.navigate.to "http://www.google.com"
+  @browser.navigate.to "http://www.google.com/ncr"
 end
  
 When /^I fill in "([^"]*)" found by "([^"]*)" with "([^"]*)"$/ do |value, type, keys|
