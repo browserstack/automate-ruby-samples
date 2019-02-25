@@ -3,12 +3,12 @@ require 'minitest/autorun'
 require 'selenium-webdriver'
 
 class GoogleTest < MiniTest::Test
-  USERNAME = ENV['BS_USERNAME']
-  BROWSERSTACK_ACCESS_KEY = ENV['BS_AUTHKEY']
-  
+  USERNAME = ENV['BROWSERSTACK_USERNAME'] || ''
+  BROWSERSTACK_ACCESS_KEY = ENV['BROWSERSTACK_ACCESS_KEY'] || ''
+
   def setup
     if USERNAME == ''
-      puts "Please add username & key as parameters while running rake task"
+      puts 'Please add USERNAME & BROWSERSTACK_ACCESS_KEY to environment or in this file'
       exit
     end
     url = "http://#{USERNAME}:#{BROWSERSTACK_ACCESS_KEY}@hub.browserstack.com/wd/hub"
@@ -17,34 +17,34 @@ class GoogleTest < MiniTest::Test
     capabilities['os_version'] = ENV['BS_AUTOMATE_OS_VERSION']
     capabilities['browser'] = ENV['SELENIUM_BROWSER']
     capabilities['browser_version'] = ENV['SELENIUM_VERSION']
+    capabilities['build'] = __FILE__
     @driver = Selenium::WebDriver.for(:remote,
-                                      :url => url,
-                                      :desired_capabilities => capabilities)
+                                      url: url,
+                                      desired_capabilities: capabilities)
   end
- 
+
   def test_post
-    @driver.navigate.to "http://www.google.com"
+    @driver.navigate.to 'https://www.google.com/ncr'
     element = @driver.find_element(:name, 'q')
-    element.send_keys "BrowserStack"
+    element.send_keys 'BrowserStack'
     element.submit
-    assert_equal(@driver.title, "BrowserStack - Google Search")
+    assert_equal(@driver.title, 'BrowserStack - Google Search')
   end
 
   def test_parallel
-    expected_contents = ""
-    @driver.get "http://fu.browserstack.com/browserstack_demo.html"
-    editor = @driver.find_element :id, "editor"
-    50.times do |cc|
-      puts cc
-      expected_contents << "a"
-      editor.send_keys "a"
-      actual_contents = @driver.execute_script "return document.getElementById('editor').value"
+    expected_contents = ''
+    @driver.get 'https://www.keyboardtester.com/tester.html'
+    editor = @driver.find_element :id, 'testarea'
+    25.times do
+      key = (('a'...'z').to_a + ('A'...'Z').to_a).sample
+      expected_contents << key
+      editor.send_keys key
+      actual_contents = editor.attribute("value")
       raise "Incorrect insertion. Expected: #{expected_contents}\nActual: #{actual_contents}" unless actual_contents == expected_contents
     end
   end
- 
+
   def teardown
     @driver.quit
   end
 end
-
