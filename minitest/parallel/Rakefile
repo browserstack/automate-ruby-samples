@@ -4,25 +4,17 @@ require 'parallel'
 require 'json'
 
 @browsers = JSON.parse(File.read('browsers.json'))
-@test_folder = 'test/*_test.rb'
-@parallel_limit = ENV['nodes'] || 1
-@parallel_limit = @parallel_limit.to_i
+@parallel_limit = (ENV['nodes'] || 5).to_i
 
 task :minitest do
   current_browser = ''
   begin
-    Parallel.map(@browsers, in_threads: @parallel_limit) do |browser|
-      current_browser = browser
-      puts "Running with: #{browser.inspect}"
-      ENV['SELENIUM_BROWSER'] = browser['browser']
-      ENV['SELENIUM_VERSION'] = browser['browser_version']
-      ENV['BS_AUTOMATE_OS'] = browser['os']
-      ENV['BS_AUTOMATE_OS_VERSION'] = browser['os_version']
-      Dir.glob(@test_folder).each do |test_file|
-        IO.popen("ruby #{test_file}") do |io|
-          io.each do |line|
-            puts line
-          end
+    Parallel.map(@browsers, in_threads: @parallel_limit) do |capabilities|
+      current_browser = capabilities
+      puts "Running with: #{capabilities.inspect}"
+      IO.popen(['ruby', 'parallel_minitest.rb', capabilities.to_json]) do |io|
+        io.each do |line|
+          puts line
         end
       end
     end

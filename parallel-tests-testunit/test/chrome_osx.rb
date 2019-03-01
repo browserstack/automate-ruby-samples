@@ -13,8 +13,19 @@ class ChromeOSX < Test::Unit::TestCase
       exit
     end
     url = "http://#{USERNAME}:#{BROWSERSTACK_ACCESS_KEY}@hub.browserstack.com/wd/hub"
-    capabilities = Selenium::WebDriver::Remote::Capabilities.chrome
-    capabilities.platform = :MAC
+    capabilities = {
+      'browserName' => 'Chrome',
+      'browserVersion' => '70.0',
+      'browserstack.use_w3c' => true,
+      'bstack:options' => {
+        'os' => 'OS X',
+        'buildName' => 'automate-ruby-samples',
+        'osVersion' => 'Mojave',
+        'sessionName' => 'parallel-tests-testunit',
+        'projectName' => 'Sample project',
+        'debug' => true
+      }
+    }
     @driver = Selenium::WebDriver.for(:remote, url: url, desired_capabilities: capabilities)
   end
 

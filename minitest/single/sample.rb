@@ -12,7 +12,25 @@ class GoogleTest < MiniTest::Test
       exit
     end
     url = "http://#{USERNAME}:#{BROWSERSTACK_ACCESS_KEY}@hub.browserstack.com/wd/hub"
-    @driver = Selenium::WebDriver.for(:remote, url: url)
+    capabilities = {
+      'browserName' => 'Firefox',
+      'browserVersion' => '65.0',
+      'browserstack.use_w3c' => true,
+      'bstack:options' => {
+        'os' => 'Windows',
+        'buildName' => 'automate-ruby-samples',
+        'osVersion' => '10',
+        'sessionName' => 'single_test',
+        'projectName' => 'Sample project',
+        'debug' => true
+      }
+    }
+    
+    @driver = Selenium::WebDriver.for(
+      :remote,
+      url: "http://#{USERNAME}:#{BROWSERSTACK_ACCESS_KEY}@hub.browserstack.com/wd/hub",
+      desired_capabilities: capabilities
+    )
   end
 
   def test_post

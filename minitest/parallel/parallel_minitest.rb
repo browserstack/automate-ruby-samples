@@ -1,8 +1,9 @@
 require 'rubygems'
 require 'minitest/autorun'
 require 'selenium-webdriver'
+require 'json'
 
-class GoogleTest < MiniTest::Test
+class ParallelMinitest < MiniTest::Test
   USERNAME = ENV['BROWSERSTACK_USERNAME'] || ''
   BROWSERSTACK_ACCESS_KEY = ENV['BROWSERSTACK_ACCESS_KEY'] || ''
 
@@ -12,12 +13,7 @@ class GoogleTest < MiniTest::Test
       exit
     end
     url = "http://#{USERNAME}:#{BROWSERSTACK_ACCESS_KEY}@hub.browserstack.com/wd/hub"
-    capabilities = Selenium::WebDriver::Remote::Capabilities.new
-    capabilities['os'] = ENV['BS_AUTOMATE_OS']
-    capabilities['os_version'] = ENV['BS_AUTOMATE_OS_VERSION']
-    capabilities['browser'] = ENV['SELENIUM_BROWSER']
-    capabilities['browser_version'] = ENV['SELENIUM_VERSION']
-    capabilities['build'] = __FILE__
+    capabilities = JSON.parse(ARGV[0])
     @driver = Selenium::WebDriver.for(:remote,
                                       url: url,
                                       desired_capabilities: capabilities)
@@ -39,7 +35,7 @@ class GoogleTest < MiniTest::Test
       key = (('a'...'z').to_a + ('A'...'Z').to_a).sample
       expected_contents << key
       editor.send_keys key
-      actual_contents = editor.attribute("value")
+      actual_contents = editor.attribute('value')
       raise "Incorrect insertion. Expected: #{expected_contents}\nActual: #{actual_contents}" unless actual_contents == expected_contents
     end
   end
