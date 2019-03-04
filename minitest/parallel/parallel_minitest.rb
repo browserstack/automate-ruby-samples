@@ -12,7 +12,7 @@ class ParallelMinitest < MiniTest::Test
       puts 'Please add USERNAME & BROWSERSTACK_ACCESS_KEY to environment or in this file'
       exit
     end
-    url = "http://#{USERNAME}:#{BROWSERSTACK_ACCESS_KEY}@hub.browserstack.com/wd/hub"
+    url = "https://#{USERNAME}:#{BROWSERSTACK_ACCESS_KEY}@hub.browserstack.com/wd/hub"
     capabilities = JSON.parse(ARGV[0])
     @driver = Selenium::WebDriver.for(:remote,
                                       url: url,

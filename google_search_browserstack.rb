@@ -27,7 +27,7 @@ capabilities = {
 
 driver = Selenium::WebDriver.for(
   :remote,
-  url: "http://#{USERNAME}:#{BROWSERSTACK_ACCESS_KEY}@hub.browserstack.com/wd/hub",
+  url: "https://#{USERNAME}:#{BROWSERSTACK_ACCESS_KEY}@hub.browserstack.com/wd/hub",
   desired_capabilities: capabilities
 )
 
