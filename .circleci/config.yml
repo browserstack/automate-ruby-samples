@@ -1,0 +1,19 @@
+version: 2
+jobs:
+  build:
+    machine:
+      ruby:
+        version: 2.0.0-p0
+      environment:
+        SELENIUM_HOST: hub.browserstack.com
+        BS_AUTOMATE_PROJECT: "Run on circleCI"
+        BS_AUTOMATE_BUILD: "build No. $CIRCLE_BUILD_NUM for circleCI"
+        SELENIUM_PLATFORM: WINDOWS
+        BS_AUTOMATE_OS_VERSION: 10
+        SELENIUM_BROWSER: IE
+        SELENIUM_VERSION: 11 # Can be changed according to script
+    steps:
+      - checkout
+      - run:
+         name: Move to cucumber/ and Run the tests.
+         command: cd cucumber/ && bundle install && bundle exec cucumber
