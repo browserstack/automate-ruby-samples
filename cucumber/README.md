@@ -13,7 +13,7 @@ cucumber BROWSERSTACK_USERNAME=<username> BROWSERSTACK_ACCESS_KEY=<access-key> S
 ```
 or
 ```bash
-cucumber BROWSERSTACK_USERNAME=<username> BROWSERSTACK_ACCESS_KEY=<access-key> BS_AUTOMATE_OS=<os> BS_AUTOMATE_OS_VERSION=<os-version> SELENIUM_BROWSER=<browser-name>
+cucumber BROWSERSTACK_USERNAME=<username> BROWSERSTACK_ACCESS_KEY=<access-key> BROWSERSTACK_AUTOMATE_OS=<os> BROWSERSTACK_AUTOMATE_OS_VERSION=<os-version> SELENIUM_BROWSER=<browser-name>
 ```
 
 #### Examples:
@@ -22,7 +22,7 @@ cucumber BROWSERSTACK_USERNAME=<username> BROWSERSTACK_ACCESS_KEY=<access-key> S
 ```
 or
 ```bash
-cucumber BROWSERSTACK_USERNAME=<username> BROWSERSTACK_ACCESS_KEY=<access-key> BS_AUTOMATE_OS="OS X" BS_AUTOMATE_OS_VERSION="Mountain Lion" SELENIUM_BROWSER="chrome"
+cucumber BROWSERSTACK_USERNAME=<username> BROWSERSTACK_ACCESS_KEY=<access-key> BROWSERSTACK_AUTOMATE_OS="OS X" BROWSERSTACK_AUTOMATE_OS_VERSION="Mountain Lion" SELENIUM_BROWSER="chrome"
 ```
 
 Alternatively the variables can be set in the environment using env or your CI framework (like Travis or Jenkins)
