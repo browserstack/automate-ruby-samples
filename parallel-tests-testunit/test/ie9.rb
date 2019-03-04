@@ -12,7 +12,7 @@ class IE9 < Test::Unit::TestCase
       puts 'Please add BROWSERSTACK_USERNAME & BROWSERSTACK_ACCESS_KEY to your environment variables or in this file'
       exit
     end
-    url = "http://#{USERNAME}:#{BROWSERSTACK_ACCESS_KEY}@hub.browserstack.com/wd/hub"
+    url = "https://#{USERNAME}:#{BROWSERSTACK_ACCESS_KEY}@hub.browserstack.com/wd/hub"
     capabilities = Selenium::WebDriver::Remote::Capabilities.internet_explorer
     capabilities.version = '9.0'
     capabilities.platform = :WINDOWS

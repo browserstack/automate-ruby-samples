@@ -12,7 +12,7 @@ class ChromeOSX < Test::Unit::TestCase
       puts 'Please add BROWSERSTACK_USERNAME & BROWSERSTACK_ACCESS_KEY to your environment variables or in this file'
       exit
     end
-    url = "http://#{USERNAME}:#{BROWSERSTACK_ACCESS_KEY}@hub.browserstack.com/wd/hub"
+    url = "https://#{USERNAME}:#{BROWSERSTACK_ACCESS_KEY}@hub.browserstack.com/wd/hub"
     capabilities = Selenium::WebDriver::Remote::Capabilities.chrome
     capabilities.platform = :MAC
     @driver = Selenium::WebDriver.for(:remote, url: url, desired_capabilities: capabilities)

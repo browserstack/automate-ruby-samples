@@ -11,7 +11,7 @@ class GoogleTest < MiniTest::Test
       puts 'Please add USERNAME & BROWSERSTACK_ACCESS_KEY to environment or in this file'
       exit
     end
-    url = "http://#{USERNAME}:#{BROWSERSTACK_ACCESS_KEY}@hub.browserstack.com/wd/hub"
+    url = "https://#{USERNAME}:#{BROWSERSTACK_ACCESS_KEY}@hub.browserstack.com/wd/hub"
     capabilities = Selenium::WebDriver::Remote::Capabilities.new
     capabilities['os'] = ENV['BS_AUTOMATE_OS']
     capabilities['os_version'] = ENV['BS_AUTOMATE_OS_VERSION']
