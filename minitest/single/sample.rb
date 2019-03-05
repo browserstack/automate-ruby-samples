@@ -8,7 +8,7 @@ class GoogleTest < MiniTest::Test
 
   def setup
     if USERNAME == ''
-      puts 'Please add USERNAME & BROWSERSTACK_ACCESS_KEY to environment or in this file'
+      puts 'Please add BROWSERSTACK_USERNAME & BROWSERSTACK_ACCESS_KEY to environment or in this file'
       exit
     end
     url = "https://#{USERNAME}:#{BROWSERSTACK_ACCESS_KEY}@hub.browserstack.com/wd/hub"
