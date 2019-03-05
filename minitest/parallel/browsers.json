@@ -1,0 +1,40 @@
+[
+  {
+    "browserName": "Firefox",
+    "browserVersion": "42.0",
+    "browserstack.use_w3c": true,
+    "bstack:options": {
+      "os": "OS X",
+      "osVersion": "Snow Leopard",
+      "sessionName": "minitest_parallel",
+      "buildName": "automate-ruby-samples",
+      "projectName": "Sample Project",
+      "debug": true
+    }
+  },
+  {
+    "browserName": "Internet Explorer",
+    "browserVersion": "10",
+    "browserstack.use_w3c": true,
+    "bstack:options": {
+      "os": "Windows",
+      "sessionName": "minitest_parallel",
+      "buildName": "automate-ruby-samples",
+      "projectName": "Sample Project",
+      "debug": true
+    }
+  },
+  {
+    "browserName": "Chrome",
+    "browserVersion": "70.0",
+    "browserstack.use_w3c": true,
+    "bstack:options": {
+      "os": "Windows",
+      "osVersion": "7",
+      "sessionName": "minitest_parallel",
+      "buildName": "automate-ruby-samples",
+      "projectName": "Sample Project",
+      "debug": true
+    }
+  }
+]
