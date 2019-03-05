@@ -1,0 +1,9 @@
+# frozen_string_literal: true
+
+source "https://rubygems.org"
+
+gem "parallel_tests", "~> 2.28"
+
+gem "selenium-webdriver", "~> 3.141"
+
+gem "test-unit", "~> 3.3"
